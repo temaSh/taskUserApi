@@ -1,6 +1,6 @@
 package com.example.taskuserapi.service;
 
-import com.example.taskuserapi.entity.User;
+import com.example.taskuserapi.entity.UserEntity;
 import com.example.taskuserapi.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,37 +18,37 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public UserEntity createUser(UserEntity userEntity) {
+        return userRepository.save(userEntity);
     }
 
     @Override
-    public User getUserById(Long userId) {
+    public UserEntity getUserById(Long userId) {
         return userRepository.findById(userId).orElse(null);
     }
 
     @Override
-    public User editUser(Long userId, User user) {
-        User existingUser = userRepository.findById(userId).orElse(null);
-        if (existingUser != null) {
-            existingUser.setEmail(user.getEmail());
-            existingUser.setFirstName(user.getFirstName());
-            existingUser.setLastName(user.getLastName());
-            existingUser.setBirthDate(user.getBirthDate());
-            existingUser.setAddress(user.getAddress());
-            existingUser.setPhoneNumber(user.getPhoneNumber());
-            return userRepository.save(existingUser);
+    public UserEntity editUser(Long userId, UserEntity userEntity) {
+        UserEntity existingUserEntity = userRepository.findById(userId).orElse(null);
+        if (existingUserEntity != null) {
+            existingUserEntity.setEmail(userEntity.getEmail());
+            existingUserEntity.setFirstName(userEntity.getFirstName());
+            existingUserEntity.setLastName(userEntity.getLastName());
+            existingUserEntity.setBirthDate(userEntity.getBirthDate());
+            existingUserEntity.setAddress(userEntity.getAddress());
+            existingUserEntity.setPhoneNumber(userEntity.getPhoneNumber());
+            return userRepository.save(existingUserEntity);
         } else
             return null;
 
     }
 
     @Override
-    public User replaceUser(Long userId, User user) {
-        User existingUser = userRepository.findById(userId).orElse(null);
-        if (existingUser != null) {
-            user.setId(existingUser.getId());
-            return userRepository.save(user);
+    public UserEntity replaceUser(Long userId, UserEntity userEntity) {
+        UserEntity existingUserEntity = userRepository.findById(userId).orElse(null);
+        if (existingUserEntity != null) {
+            userEntity.setId(existingUserEntity.getId());
+            return userRepository.save(userEntity);
         } else
             return null;
     }
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> searchUsersByBirthDateRange(LocalDate from, LocalDate to) {
+    public List<UserEntity> searchUsersByBirthDateRange(LocalDate from, LocalDate to) {
         return userRepository.findByBirthDateBetween(from, to);
     }
 }
