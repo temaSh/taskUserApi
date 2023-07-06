@@ -9,4 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("com.example.taskuserapi.entity")
 public class H2DatabaseConfig {
 
+    // Дополнительные настройки и бины
+
 }
+
