@@ -8,8 +8,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository <UserEntity, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     List<UserEntity> findByBirthDateBetween(LocalDate from, LocalDate to);
-
 }
+

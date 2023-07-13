@@ -1,6 +1,5 @@
 package com.example.taskuserapi.service;
 
-
 import com.example.taskuserapi.entity.UserEntity;
 
 import java.time.LocalDate;
@@ -20,4 +19,3 @@ public interface UserService {
 
     List<UserEntity> searchUsersByBirthDateRange(LocalDate from, LocalDate to);
 }
-
